@@ -1,0 +1,10 @@
+<h1>Game <%= @game.id %></h1>
+
+<h2>Records</h2>
+<ul>
+  <% @game.records.each do |record| %>
+    <li><%= link_to "Record ##{record.id}", game_record_path(@game, record) %></li>
+  <% end %>
+</ul>
+
+<%= link_to 'New Record', new_game_record_path(@game) %>

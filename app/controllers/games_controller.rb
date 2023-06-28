@@ -1,15 +1,16 @@
 class GamesController < ApplicationController
+  before_action :set_user
   before_action :set_game, only: [:show, :edit, :update, :destroy]
 
-  def index
-    @games = Game.all
+  def new
+    @game = @user.games.build
   end
 
   def show
   end
 
-  def new
-    @game = Game.new
+  def index
+    @games = @user.games.all
   end
 
   def edit
@@ -40,11 +41,11 @@ class GamesController < ApplicationController
 
   private
 
-  def set_game
-    @game = Game.find(params[:id])
+  def set_user
+    @user = User.find(params[:user_id])
   end
 
-  def game_params
-    params.require(:game).permit(:user_id) # 追加すべきパラメータをここに追加します
+  def set_game
+    @game = @user.games.find(params[:id])
   end
 end

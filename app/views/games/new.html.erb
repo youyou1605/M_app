@@ -1,0 +1,9 @@
+<h1>New Game</h1>
+
+<%= form_with model: [@user, @game], url: user_games_path(@user) do |form| %>
+  <!-- ここに必要なフィールドを追加します -->
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
